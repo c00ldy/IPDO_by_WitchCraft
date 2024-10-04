@@ -2,12 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Docs = () => {
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 }, // Stagger children
+      transition: { staggerChildren: 0.2 }, 
     },
   };
 

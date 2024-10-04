@@ -12,7 +12,7 @@ const LoginPopup = ({ setShowLogin }) => {
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false); 
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -21,7 +21,7 @@ const LoginPopup = ({ setShowLogin }) => {
   };
 
   useEffect(() => {
-    console.log(data); // Check if data is being updated correctly
+    console.log(data);
   }, [data]);
 
   const onLogin = async (event) => {
@@ -34,9 +34,9 @@ const LoginPopup = ({ setShowLogin }) => {
       newUrl += "/api/user/register";
     }
 
-    setLoading(true); // Set loading to true before the request
+    setLoading(true); 
     try {
-      console.log("Sending data to backend:", data); // Log the data being sent
+      console.log("Sending data to backend:", data);
       const response = await axios.post(newUrl, data);
 
       if (response.data.success) {
@@ -49,7 +49,7 @@ const LoginPopup = ({ setShowLogin }) => {
     } catch (error) {
       console.error("Error during login/registration:", error);
     } finally {
-      setLoading(false); // Reset loading state after request
+      setLoading(false); 
     }
   };
 
@@ -96,7 +96,7 @@ const LoginPopup = ({ setShowLogin }) => {
         </div>
         <button type="submit" disabled={loading}>
           {loading ? (
-            <span className="loader"></span> // Show loader if loading
+            <span className="loader"></span> 
           ) : (
             currState === "Sign Up" ? "Create account" : "Login"
           )}

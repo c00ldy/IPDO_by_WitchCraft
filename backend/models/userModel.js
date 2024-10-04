@@ -8,8 +8,8 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true, // Ensure email is unique
-        lowercase: true, // Automatically convert email to lowercase
+        unique: true, 
+        lowercase: true, 
     },
     password: {
         type: String,

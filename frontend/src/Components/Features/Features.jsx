@@ -7,7 +7,7 @@ const Feature = ({ icon, title, description, index }) => {
       className="bg-[#0d1b2a] text-[#a1caff] p-6 rounded-lg shadow-md flex flex-col items-center text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.2, duration: 0.5 }} // Stagger animation
+      transition={{ delay: index * 0.2, duration: 0.5 }} 
     >
       <div className="text-4xl mb-4 text-blue-text">{icon}</div>
       <h3 className="font-semibold text-lg text-blue-text">{title}</h3>
@@ -19,7 +19,7 @@ const Feature = ({ icon, title, description, index }) => {
 const Features = () => {
   const featureData = [
     {
-      icon: '👤', // Replace with actual icons or SVGs
+      icon: '👤', 
       title: 'Open Ports',
       description: 'Identify open ports and potential vulnerabilities',
     },
@@ -49,7 +49,7 @@ const Features = () => {
             icon={feature.icon}
             title={feature.title}
             description={feature.description}
-            index={index} // Pass the index for staggered animation
+            index={index} 
           />
         ))}
       </div>

@@ -5,9 +5,9 @@ import { StoreContext } from "../../context/StoreContext";
 import { motion } from "framer-motion";
 import "./Navbar.css";
 
-const Navbar = ({ setShowLogin }) => {
-  const { token, setToken } = useContext(StoreContext);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+const Navbar = () => {
+  const { token, setToken,setShowLogin } = useContext(StoreContext);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
   const navigate = useNavigate();
 
   const logout = () => {
@@ -20,14 +20,13 @@ const Navbar = ({ setShowLogin }) => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  // Animation variants for staggered effect
   const navLinkVariants = {
-    hidden: { opacity: 0, x: -20 }, // Start hidden and slightly to the left
+    hidden: { opacity: 0, x: -20 }, 
     visible: (i) => ({
       opacity: 1,
       x: 0,
       transition: {
-        delay: i * 0.2, // Stagger the animation by 0.2s for each item
+        delay: i * 0.2, 
         duration: 0.5,
       },
     }),
@@ -36,20 +35,18 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <div>
       <header className="w-full bg-[#010b18] px-10 h-14 flex items-center justify-between border-b border-blue-500">
-        {/* Left Section: Logo */}
         <div className="flex items-center">
           <Link to="/">
             <img src={assets.logo} alt="Logo" className="w-40" />
           </Link>
         </div>
 
-        {/* Right Section: Navigation Links and Sign Up Button */}
         <div className="ml-auto flex items-center gap-4 sm:gap-6 text-[#a1caff] text-sm sm:text-base">
           <nav className="flex gap-4 sm:gap-6">
             <motion.div
               initial="hidden"
               animate="visible"
-              custom={0} // First item
+              custom={0}
               variants={navLinkVariants}
             >
               <Link to="/home">
@@ -59,7 +56,7 @@ const Navbar = ({ setShowLogin }) => {
             <motion.div
               initial="hidden"
               animate="visible"
-              custom={1} // Second item
+              custom={1} 
               variants={navLinkVariants}
             >
               <Link to="/about">
@@ -69,7 +66,7 @@ const Navbar = ({ setShowLogin }) => {
             <motion.div
               initial="hidden"
               animate="visible"
-              custom={2} // Third item
+              custom={2} 
               variants={navLinkVariants}
             >
               <Link to="/docs">
@@ -78,7 +75,6 @@ const Navbar = ({ setShowLogin }) => {
             </motion.div>
           </nav>
 
-          {/* Sign Up / Profile Section */}
           <div className="ml-auto">
             {!token ? (
               <button
@@ -90,7 +86,7 @@ const Navbar = ({ setShowLogin }) => {
             ) : (
               <div className="nav-profile" onClick={toggleDropdown}>
                 <img src={assets.profile_icon} alt="Profile" />
-                {isDropdownOpen && ( // Render dropdown if it's open
+                {isDropdownOpen && ( 
                   <ul className="nav-profile-dropdown">
                     <li onClick={logout}>
                       <img src={assets.logout_icon} alt="Logout" />

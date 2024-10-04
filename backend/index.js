@@ -18,14 +18,13 @@ app.use("/api/user", userRouter);
 connectDB();
 
 const formatShodanData = (main_data) => {
-  // Fallback for missing properties using optional chaining and default values
   return {
     Ip: main_data?.ip_str || "N/A",
-    isp: main_data?.isp || "N/A",  // Direct from main_data, not nested
+    isp: main_data?.isp || "N/A",  
     Organization: main_data?.org || "N/A",
-    ASN: main_data?.asn || "N/A",  // Shodan's response includes this in the main object
+    ASN: main_data?.asn || "N/A",  
 
-    domains: (main_data?.data && main_data.data[0]?.domains?.[0]) || "N/A", // Fallback for domains array
+    domains: (main_data?.data && main_data.data[0]?.domains?.[0]) || "N/A",
 
     city: main_data?.data?.[0]?.location?.city || "N/A",
     region: main_data?.data?.[0]?.location?.region_code || "N/A",
@@ -36,13 +35,12 @@ const formatShodanData = (main_data) => {
     service: main_data?.data?.[0]?.cloud?.service || "N/A",
     provider: main_data?.data?.[0]?.cloud?.provider || "N/A",
 
-    openPorts: main_data?.ports || [],  // Ensure open ports is always an array
+    openPorts: main_data?.ports || [],  
 
-    PassiveVulnerability: main_data?.vulns || "N/A", // Vulnerabilities as an array or "N/A"
+    PassiveVulnerability: main_data?.vulns || "N/A", 
   };
 };
 
-// Shodan API route
 app.get("/api/shodan/:ip?", async (req, res) => {
   const ip = req.params.ip;
 
@@ -66,7 +64,6 @@ app.get("/api/shodan/:ip?", async (req, res) => {
   }
 });
 
-// Start the server
 app.listen(PORT, (err) => {
   if (err) {
     console.error("Error starting server:", err.message);

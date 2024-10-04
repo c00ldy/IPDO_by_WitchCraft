@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import Features from "../Features/Features";
+import { StoreContext } from "../../context/StoreContext";
+import LoginPopup from "../LoginPopup/LoginPopup";
 
 const Main = () => {
+  const {token,setShowLogin,showLogin } = useContext(StoreContext)
   const [ipAddress, setIpAddress] = useState("");
   const [ipDetails, setIpDetails] = useState(null);
   const [lookupTriggered, setLookupTriggered] = useState(false);
-  const [loading, setLoading] = useState(false); // State for loading animation
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -16,7 +19,7 @@ const Main = () => {
         return;
       }
 
-      setLoading(true); // Start loading animation
+      setLoading(true); 
 
       try {
         const response = await fetch(
@@ -35,7 +38,7 @@ const Main = () => {
         alert("An error occurred while fetching the IP details.");
         setIpDetails(null);
       } finally {
-        setLoading(false); // Stop loading animation
+        setLoading(false); 
       }
     };
 
@@ -47,6 +50,10 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!token) {
+      setShowLogin(true); 
+      return;
+    }
     if (!ipAddress.trim()) {
       setError("Please enter an IP address.");
       return;
@@ -57,8 +64,14 @@ const Main = () => {
     setLookupTriggered(true);
   };
 
+  const handleCloseLoginPopup = () => {
+    setShowLogin(false);
+  };
+
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-[#010b18] text-[#a1caff]">
+      {showLogin && <LoginPopup setShowLogin={setShowLogin} onClose={handleCloseLoginPopup} />} 
       <div className="space-y-2 text-center">
         <motion.h1
           className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl mt-20 py-7"

@@ -2,14 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const About = () => {
-  // Variants for row-wise staggered animation
   const staggerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2, // Delay between each item
+        delay: i * 0.2, 
         duration: 0.5,
       },
     }),
@@ -18,37 +17,34 @@ const About = () => {
   return (
     <div className="min-h-screen bg-[#010b18] text-[#a1caff] p-8">
       <div className="max-w-4xl mx-auto">
-        {/* Heading */}
         <motion.h1
           className="text-3xl font-bold mb-4"
           initial="hidden"
           animate="visible"
           variants={staggerVariants}
-          custom={0} // Delay for this element
+          custom={0} 
         >
           About IPDO (IP Discovery & Open Ports)
         </motion.h1>
 
-        {/* Intro paragraph */}
         <motion.div
           className="mb-6"
           initial="hidden"
           animate="visible"
           variants={staggerVariants}
-          custom={1} // Delay for this element
+          custom={1} 
         >
           <p className="text-lg">
             IPDO is a cutting-edge platform for IP address intelligence and threat assessment. Our team of cybersecurity experts and data scientists have developed advanced algorithms to provide you with comprehensive insights about any IP address.
           </p>
         </motion.div>
 
-        {/* Our Mission Section */}
         <motion.h2
           className="text-2xl font-bold mb-4"
           initial="hidden"
           animate="visible"
           variants={staggerVariants}
-          custom={2} // Delay for this element
+          custom={2}
         >
           Our Mission
         </motion.h2>
@@ -89,7 +85,6 @@ const About = () => {
           At the core of our mission lies a dedication to fostering a safer and more private internet experience for everyone. We believe that informed users are empowered users, and we aim to cultivate an environment where individuals can confidently take charge of their online interactions.
         </motion.p>
 
-        {/* Our Team Section */}
         <motion.h2
           className="text-2xl font-bold mb-4"
           initial="hidden"
