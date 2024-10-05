@@ -14,9 +14,9 @@
     flex-direction: column;
     gap: 10px;
     background-color: #fff2ef;
-    padding: 12px 25px;
+    padding: 5px 40px 5px 10px;
     border-radius: 4px;
-    border: 1px solid tomato;
+    border: 1px solid rgb(0, 89, 255);
     outline: 2px solid white;
     list-style: none;
 }
@@ -28,5 +28,5 @@
 }
 
 .nav-profile-dropdown li:hover{
-    color: tomato;
+    color: rgb(3, 28, 255);
 }
