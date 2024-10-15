@@ -17,5 +17,5 @@ const userSchema = new mongoose.Schema({
     },
 }, { minimize: false });
 
-const userModel = mongoose.model("users", userSchema); // Correct syntax for mongoose.model
+const userModel = mongoose.model("users", userSchema); 
 export default userModel;
