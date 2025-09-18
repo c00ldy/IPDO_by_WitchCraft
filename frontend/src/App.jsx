@@ -1,19 +1,14 @@
-import { useContext, useState } from "react";
 import {Routes, Route} from 'react-router-dom'
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home";
 import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About";
-import LoginPopup from "./Components/LoginPopup/LoginPopup";
 import Docs from "./Pages/Docs";
-import { StoreContext } from "./context/StoreContext";
 
 function App() {
-  const {showLogin,setShowLogin} = useContext(StoreContext);
   return (
     <>
-     {showLogin ? <LoginPopup setShowLogin={setShowLogin}/>:<></>}
-      <Navbar setShowLogin={setShowLogin} />
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/home' element={<Home/>}/>

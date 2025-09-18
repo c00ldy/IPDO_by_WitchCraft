@@ -2,8 +2,6 @@ import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import axios from 'axios';
-import userRouter from "./routes/userRoute.js";
-import { connectDB } from "./config/db.js";
 
 const app = express();
 const PORT = 3000;
@@ -13,9 +11,6 @@ const API_KEY = process.env.SHODAN_API_KEY;
 
 app.use(express.json());
 app.use(cors());
-app.use("/api/user", userRouter);
-
-connectDB();
 
 const formatShodanData = (main_data) => {
   return {

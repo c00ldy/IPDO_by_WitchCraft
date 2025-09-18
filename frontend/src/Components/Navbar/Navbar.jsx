@@ -1,24 +1,10 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { assets } from "../../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
-import { StoreContext } from "../../context/StoreContext";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { token, setToken,setShowLogin } = useContext(StoreContext);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
-  const navigate = useNavigate();
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
-    navigate("/");
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
 
   const navLinkVariants = {
     hidden: { opacity: 0, x: -20 }, 
@@ -75,28 +61,7 @@ const Navbar = () => {
             </motion.div>
           </nav>
 
-          <div className="ml-auto">
-            {!token ? (
-              <button
-                onClick={() => setShowLogin(true)}
-                className="px-3 py-1 border border-blue-500 text-[#a1caff] rounded hover:bg-blue-500 hover:text-[white] transition-colors text-sm sm:text-base"
-              >
-                Sign Up
-              </button>
-            ) : (
-              <div className="nav-profile" onClick={toggleDropdown}>
-                <img src={assets.profile_icon} alt="Profile" />
-                {isDropdownOpen && ( 
-                  <ul className="nav-profile-dropdown">
-                    <li onClick={logout}>
-                      <img src={assets.logout_icon} alt="Logout" />
-                      <p>Logout</p>
-                    </li>
-                  </ul>
-                )}
-              </div>
-            )}
-          </div>
+          <div className="ml-auto"></div>
         </div>
       </header>
     </div>
